@@ -1,10 +1,5 @@
 User-agent: *
 Allow: /
 
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-Sitemap: https://deungchon-night-note.link-hub.org/sitemap.xml
+Sitemap: https://magok-hyperpublic-note.cityjot.shop/sitemap.xml
+Sitemap: https://magok-hyperpublic-note.cityjot.shop/sitemap-pages.xml

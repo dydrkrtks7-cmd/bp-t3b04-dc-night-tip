@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://deungchon-night-note.link-hub.org/sitemap.xml
-Sitemap: https://deungchon-night-note.link-hub.org/sitemap-pages.xml
+Sitemap: https://magok-hyperpublic-note.cityjot.shop/sitemap.xml
+Sitemap: https://magok-hyperpublic-note.cityjot.shop/sitemap-pages.xml

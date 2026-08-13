@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (2/2) · t3b04-dc-night-tip</title>
+  <meta name="description" content="t3b04-dc-night-tip에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://magok-hyperpublic-note.cityjot.shop/posts-2.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+        :root {
+            --bg-color: #08090c;
+            --main-gradient: linear-gradient(180deg, #08090d 0%, #151219 100%);
+            --card-surface: rgba(255, 255, 255, 0.02);
+            --border-color: rgba(255, 255, 255, 0.04);
+            --text-high: #f5f0f6;
+            --text-low: #938a97;
+            --coral: #f43f5e;
+            --glow: rgba(244, 63, 94, 0.12);
+            --font-serif: 'Gowun Batang', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--main-gradient);
+            color: var(--text-high);
+            font-family: var(--font-serif);
+            line-height: 1.85;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 660px;
+            margin: 0 auto;
+            padding: 90px 24px;
+            width: 100%;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .blog-header::after {
+            content: '';
+            display: block;
+            width: 35px;
+            height: 1px;
+            background: var(--coral);
+            margin: 20px auto 0;
+            opacity: 0.4;
+            box-shadow: 0 0 6px var(--coral);
+        }
+
+        .blog-sub {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--coral);
+            font-family: var(--font-sans);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .blog-title {
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.45;
+            letter-spacing: -0.01em;
+        }
+
+        .blog-date {
+            font-size: 0.85rem;
+            color: var(--text-low);
+            margin-top: 10px;
+            font-family: var(--font-sans);
+        }
+
+        .essay-content {
+            font-size: 1.08rem;
+            color: var(--text-high);
+            text-align: justify;
+        }
+
+        .essay-p {
+            margin-bottom: 28px;
+            text-indent: 10px;
+        }
+
+        .highlight-quote {
+            background: var(--card-surface);
+            border-left: 2px solid var(--coral);
+            padding: 20px 24px;
+            margin: 36px 0;
+            border-radius: 0 8px 8px 0;
+            backdrop-filter: blur(8px);
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .quote-inner {
+            font-style: italic;
+            color: #fdf2f8;
+            font-size: 1.02rem;
+        }
+
+        .comments {
+            margin-top: 75px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 40px;
+        }
+
+        .comments-label {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--coral);
+            letter-spacing: 0.12em;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+        }
+
+        .comment-node {
+            background: var(--card-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .comment-node:hover {
+            border-color: rgba(244, 63, 94, 0.22);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .comment-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+        }
+
+        .author-name {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .post-time {
+            color: var(--text-low);
+        }
+
+        .stars {
+            color: var(--coral);
+            font-size: 0.75rem;
+            margin-top: 2px;
+        }
+
+        .text-body {
+            font-size: 0.92rem;
+            color: var(--text-high);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 35px 24px;
+            border-top: 1px solid var(--border-color);
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--text-low);
+            letter-spacing: 0.05em;
+        }
+
+        .coral-glow {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 16px;
+            }
+
+            .blog-title {
+                font-size: 1.55rem;
+            }
+
+            .essay-content {
+                font-size: 1.02rem;
+            }
+        }
+    </style>
+  <meta property="og:title" content="글 목록 (2/2) · t3b04-dc-night-tip">
+  <meta property="og:description" content="t3b04-dc-night-tip에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://magok-hyperpublic-note.cityjot.shop/posts-2.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header class="blog-header">
+            <div class="coral-glow"></div>
+            <div class="blog-sub">OLD STREET JOURNAL</div>
+            <div class="blog-title">오래된 옛 가로등 불빛 아래 번지는 조용한 사색의 일기</div>
+            <div class="blog-date">2026. 05. 27</div>
+        </header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 40개 · 2/2 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0231.html">등촌 유흥 꿀팁으로 확인하는 합정 셔츠룸 단골들이 뽑은 핫플 매거진과 예약 필수 지침</a>
+        <p class="post-item__summary">등촌 유흥 꿀팁 관련 정보를 찾다 보면 의외로 간단한 예약 실수로 곤란을 겪는 사례를 자주 접하게 됩니다. 특히 인기 있는 장소는 사전 준비가 미흡하면 원하는 시간에 입장이 불가능합니다. 단골들의 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0232.html">등촌 유흥 꿀팁 공유를 위한 구글 인덱싱 속도 초고속 광회선 대역폭 최적화 체크리스트</a>
+        <p class="post-item__summary">등촌 유흥 꿀팁과 같은 지역 정보를 온라인에 공유할 때는 빠른 검색 결과 반영이 핵심입니다. 정보가 아무리 좋아도 검색 엔진이 이를 빠르게 읽어가지 못하면 가치가 떨어집니다. 오늘 공유하는 구글 인</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0331.html">등촌 유흥 꿀팁 활용법과 합정 노래방 추천정보 비교</a>
+        <p class="post-item__summary">쾌적한 공간에서의 여가 시간은 시설의 청결도, 음향 시스템의 수준, 그리고 서비스의 친절함이라는 세 가지 충족 조건이 완성되어야 합니다. 등촌 유흥 꿀팁을 활용하려는 분들은 보통 본인의 목적에 맞는</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0332.html">등촌 유흥 꿀팁 기반의 연남 클럽 추천정보 선택법</a>
+        <p class="post-item__summary">오늘 밤 무엇을 할지 고민하고 계신가요? 등촌 유흥 꿀팁을 확인하면서 혹시 연남 지역의 역동적인 분위기를 접해본 적이 있는지 궁금합니다. 많은 사람이 클럽을 방문할 때 단순히 음악만을 즐기는 것이 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0333.html">등촌 유흥 꿀팁 활용해 알아보는 합정 셔츠룸 추천정보</a>
+        <p class="post-item__summary">등촌 유흥 꿀팁을 평소에 즐겨 찾는 분들이라면 합정 인근의 유흥 문화를 탐색할 때 보다 체계적인 접근이 필요합니다. 셔츠룸 방문은 충동적인 결정보다는 정해진 절차를 따라야 기대하는 만족도를 얻을 수</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0334.html">등촌 유흥 꿀팁: 공덕 가라오케 추천정보를 위한 가격 판단 기준 비교</a>
+        <p class="post-item__summary">등촌 지역의 유흥 관련 꿀팁을 공유하며 얻은 인사이트를 바탕으로, 이번에는 공덕 지역의 가라오케 추천정보를 탐색해 보겠습니다. 공덕은 교통의 요지이자 다양한 상업 시설이 밀집된 지역으로, 여러 가지</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0335.html">등촌 유흥 꿀팁 확인하고 상수 마사지 추천정보 활용하기</a>
+        <p class="post-item__summary">등촌 유흥 꿀팁을 숙지하고 계신 분들이 상수 인근의 마사지 샵을 찾을 때 의외로 많은 실수를 저지릅니다. 가장 흔한 실패 지점은 자신의 현재 컨디션을 제대로 고려하지 않고 무리하게 강도 높은 코스를</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0336.html">등촌 유흥 꿀팁 활용한 망원 노래방 추천정보와 접근성 체크리스트</a>
+        <p class="post-item__summary">등촌 유흥 꿀팁 내용을 접하다 보면 자연스럽게 인근 지역의 유흥 문화로 시야가 넓어지기 마련입니다. 특히 망원 지역은 독특한 분위기를 가진 노래방들이 밀집해 있어 많은 이들이 즐겨 찾는 장소 중 하</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0337.html">등촌 유흥 꿀팁 숙지 후 떠나는 홍대 노래방 추천정보 초행자 주의점</a>
+        <p class="post-item__summary">낯선 홍대 거리를 처음 방문하여 적절한 시설을 찾던 A씨는 화려한 간판들 속에서 혼란을 겪은 적이 있습니다. 등촌 유흥 꿀팁 등을 통해 기본적인 유흥 문화 지식을 쌓았더라도, 홍대라는 지역은 특유의</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0338.html">등촌 유흥 꿀팁 기반의 공덕 셔츠룸 추천정보와 시간대 선택의 진실</a>
+        <p class="post-item__summary">많은 이들이 셔츠룸은 특정 시간대에만 방문해야 한다는 고정관념을 가지고 있습니다. 하지만 등촌 유흥 꿀팁 내용을 살펴보면 지역마다, 그리고 업종마다 운영 방식이 제각각임을 알 수 있습니다. 공덕 지</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0339.html">등촌 유흥 꿀팁 활용해 알아보는 연남 유흥 추천정보 가이드</a>
+        <p class="post-item__summary">성공적인 야간 일정을 기획할 때는 인원 구성의 특성을 가장 먼저 고려해야 합니다. 일행이 소수인지 아니면 다수인지에 따라 적합한 장소의 분위기와 서비스 형태가 완전히 달라지기 때문입니다. 등촌 유흥</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0340.html">등촌 유흥 꿀팁 바탕으로 분석하는 마곡 가라오케 추천정보 활용법</a>
+        <p class="post-item__summary">여러분은 평소 가라오케를 선택할 때 어떤 기준을 가장 중요하게 생각하시나요? 단순히 시설의 규모만 따지기보다는 운영 방식이나 서비스의 일관성을 검토하는 것이 훨씬 합리적입니다. 등촌 유흥 꿀팁 데이</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0341.html">등촌 유흥 꿀팁: 마곡 유흥 추천정보를 위한 후기 신뢰도 판별 절차</a>
+        <p class="post-item__summary">등촌 지역의 유흥 관련 꿀팁을 공유하면서 얻은 경험을 바탕으로, 이번에는 마곡 지역의 유흥 추천정보를 얻는 데 집중해 보겠습니다. 마곡은 새로운 상업 지구로 떠오르며 다양한 엔터테인먼트 시설을 갖추</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/juice-1.html">등촌 유흥 꿀팁</a>
+        <p class="post-item__summary">등촌 지역의 유흥 문화를 이해하려면 해당 지역의 특성을 먼저 파악하는 것이 중요합니다. 이곳은 독특한 분위기와 다양한 볼거리가 공존하는 공간으로, 방문 전 충분한 정보 수집이 필요합니다. 지역 특성</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/juice-2.html">등촌 유흥 꿀팁과 모발 관리의 연관성</a>
+        <p class="post-item__summary">등촌 지역의 유흥 문화를 이해하고 즐기려면 다양한 요소를 고려해야 합니다. 그중에서도 외모 관리, 특히 두피와 모발 건강은 첫인상을 좌우하는 중요한 요소로 작용합니다. 번화가에서는 많은 이들이 스스</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-1.html">등촌 유흥 꿀팁</a>
+        <p class="post-item__summary">등촌은 다양한 분위기의 유흥 시설이 밀집된 지역으로, 방문객의 성향에 따라 적합한 장소를 선택하는 것이 중요합니다. 먼저, 목적에 맞는 업소의 형태를 파악하는 것이 필요합니다. 음악의 볼륨이나 조명</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-2.html">등촌 유흥 꿀팁 안내</a>
+        <p class="post-item__summary">등촌 지역의 유흥 문화를 올바르게 이해하고 즐기는 방법에 대해 알아보는 것이 중요합니다. 각 업종마다 제공하는 서비스와 분위기는 크게 다르며, 자신의 취향과 목적에 맞는 선택을 하는 것이 핵심입니다</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-3.html">등촌 유흥 꿀팁 및 이용 안내</a>
+        <p class="post-item__summary">유흥 지역을 방문할 때에는 사전에 충분한 정보를 습득하는 것이 중요합니다. 특히 등촌과 같은 유흥 밀집 지역은 야간에는 보행자나 교통량이 많아지므로, 안전한 이동 경로를 미리 확인하고 대중교통이나 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/review-001.html">월매출 3 천의 환상과 POS 에러 404 가 알려준 등촌 유흥 꿀팁 의 민낯</a>
+        <p class="post-item__summary">형님들이 흔히 말하는 '대박'이라는 게 실제로는 얼마나 허상인지, 내가 직접 POS 단말기 앞에 서서 피를 말리며 깨달은 진실부터 털어놓지.</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/review-002.html">권리금 2 억의 배신: 등촌 그늘진 골목에서 본 원가율의 민낯</a>
+        <p class="post-item__summary">neon_sign, dark_alley, receipt_pile, calculator, ledger_book, empty_bottle, dim_lighting, urban_night, financi</p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <a class="pager__link" href="posts.html">1</a>
+      <span class="pager__current">2</span>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>

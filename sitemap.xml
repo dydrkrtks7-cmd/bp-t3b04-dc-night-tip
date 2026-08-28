@@ -56,11 +56,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://magok-hyperpublic-note.cityjot.shop/posts/review-002.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://magok-hyperpublic-note.cityjot.shop/posts.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>

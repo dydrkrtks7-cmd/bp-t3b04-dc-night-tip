@@ -6,6 +6,11 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://magok-hyperpublic-note.cityjot.shop/posts.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://magok-hyperpublic-note.cityjot.shop/posts/checklist-002-gjq4y2.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -52,11 +57,6 @@
   </url>
   <url>
     <loc>https://magok-hyperpublic-note.cityjot.shop/posts/review-001.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://magok-hyperpublic-note.cityjot.shop/posts.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
